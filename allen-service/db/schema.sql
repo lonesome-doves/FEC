@@ -10,5 +10,6 @@ CREATE TABLE `photos` (
   `username` VARCHAR(64),
   `link` VARCHAR(255),
   `tag` VARCHAR(32),
+  `photo_set` VARCHAR(10),
   PRIMARY KEY (`id`)
 )
