@@ -2,28 +2,24 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'sonny',
+  password: '',
   database: 'airbnb',
 });
 
 connection.connect();
 
-const insertIntoDB = (id, likes, username, link, tag) => {
-  const sql = `INSERT INTO photos (id, likes, username, link, tag)
-               VALUES ('${id}', '${likes}', '${username}', '${link}', '${tag}')`;
+const insertIntoDB = (id, likes, username, link, tag, photoSet) => {
+  const sql = `INSERT INTO photos (id, likes, username, link, tag, photo_set)
+               VALUES ('${id}', '${likes}', '${username}', '${link}', '${tag}', '${photoSet}')`;
 
   connection.query(sql, (err, row) => {
     if (err) {
       console.log(err);
-    } else {
-      console.log('record inserted successefully!');
     }
-  })
-}
-
+  });
+};
 
 const retrieve = (callback) => {
-
   const sql = `SELECT *
                FROM photos`;
 
@@ -33,8 +29,8 @@ const retrieve = (callback) => {
     } else {
       callback(row);
     }
-  })
-}
+  });
+};
 
 // connection.end();
 

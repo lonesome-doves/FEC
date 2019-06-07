@@ -12,6 +12,7 @@ class App extends React.Component {
       isHome: true,
       yAxis: 0,
       photos: {
+        home: [],
         livingRoom: [],
         kitchen: [],
         bedroom: [],
@@ -34,6 +35,7 @@ class App extends React.Component {
     })
       .then((response) => response.json())
       .then((data) => {
+        const home = [];
         const livingRoom = [];
         const kitchen = [];
         const bedroom = [];
@@ -45,28 +47,31 @@ class App extends React.Component {
 
         for (let i = 0; i < data.length; i++) {
           switch (data[i].tag) {
-            case 'Living Room':
+            case 'home':
+              home.push(data[i]);
+              continue;
+            case 'living room':
               livingRoom.push(data[i]);
               continue;
-            case 'Kitchen':
+            case 'kitchen':
               kitchen.push(data[i]);
               continue;
-            case 'Bedroom':
+            case 'bedroom':
               bedroom.push(data[i]);
               continue;
-            case 'Bathroom':
+            case 'bathroom':
               bathroom.push(data[i]);
               continue;
-            case 'Interior':
+            case 'interior':
               interior.push(data[i]);
               continue;
-            case 'Other':
+            case 'other':
               other.push(data[i]);
               continue;
-            case 'Backyard':
+            case 'backyard':
               backyard.push(data[i]);
               continue;
-            case 'Pets':
+            case 'pets':
               pets.push(data[i]);
               continue;
           }
@@ -89,6 +94,7 @@ class App extends React.Component {
 
         this.setState({
           photos: {
+            home: randomize(home, 1),
             livingRoom: randomize(livingRoom, 5),
             kitchen: randomize(kitchen, 5),
             bedroom: randomize(bedroom, 4),

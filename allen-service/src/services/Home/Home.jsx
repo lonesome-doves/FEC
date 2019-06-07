@@ -10,9 +10,9 @@ const Home = (props) => {
   return (
     <div>
       <Navigation />
-      <Splash callback={props.callback}/>
+      <Splash callback={props.callback} homePhoto={props.photos.home} />
       <Description />
-      <Gallery callback={props.callback} photos={props.photos}/>
+      <Gallery callback={props.callback} photos={props.photos} />
     </div>
   );
 };
