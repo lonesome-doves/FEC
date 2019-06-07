@@ -5,7 +5,7 @@ const database = 'airbnb';
 
 const connection = mysql.createConnection({
   user: 'root',
-  password: 'sonny'
+  password: ''
 });
 
 const db = Promise.promisifyAll(connection);
