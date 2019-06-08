@@ -44,42 +44,75 @@ class App extends React.Component {
         const other = [];
         const backyard = [];
         const pets = [];
+        const photoSet = (() => {
+          const randomSet = [
+            'zero',
+            'one',
+            'two',
+            'three',
+            'four',
+            'five',
+            'six',
+            'seven',
+            'eight',
+            'nine',
+          ];
+          return randomSet[Math.floor(Math.random() * randomSet.length)];
+        })();
 
         for (let i = 0; i < data.length; i++) {
           switch (data[i].tag) {
             case 'home':
-              home.push(data[i]);
+              data[i].photo_set === photoSet
+              ? home.unshift(data[i])
+              : home.push(data[i]);
               continue;
             case 'living room':
-              livingRoom.push(data[i]);
+              data[i].photo_set === photoSet
+              ? livingRoom.unshift(data[i])
+              : livingRoom.push(data[i]);
               continue;
             case 'kitchen':
-              kitchen.push(data[i]);
+              data[i].photo_set === photoSet
+              ? kitchen.unshift(data[i])
+              : kitchen.push(data[i]);
               continue;
             case 'bedroom':
-              bedroom.push(data[i]);
+              data[i].photo_set === photoSet
+              ? bedroom.unshift(data[i])
+              : bedroom.push(data[i]);
               continue;
             case 'bathroom':
-              bathroom.push(data[i]);
+              data[i].photo_set === photoSet
+              ? bathroom.unshift(data[i])
+              : bathroom.push(data[i]);
               continue;
             case 'interior':
-              interior.push(data[i]);
+              data[i].photo_set === photoSet
+              ? interior.unshift(data[i])
+              : interior.push(data[i]);
               continue;
             case 'other':
-              other.push(data[i]);
+              data[i].photo_set === photoSet
+              ? other.unshift(data[i])
+              : other.push(data[i]);
               continue;
             case 'backyard':
-              backyard.push(data[i]);
+              data[i].photo_set === photoSet
+              ? backyard.unshift(data[i])
+              : backyard.push(data[i]);
               continue;
             case 'pets':
-              pets.push(data[i]);
+              data[i].photo_set === photoSet
+              ? pets.unshift(data[i])
+              : pets.push(data[i]);
               continue;
           }
         }
 
         function randomize(arr, count) {
-          const result = [];
-          const copyArr = arr.slice();
+          const result = [arr[0]];
+          const copyArr = arr.slice(1);
           let i = 0;
           let int;
 
@@ -171,12 +204,7 @@ class App extends React.Component {
 
   render() {
     if (this.state.isHome) {
-      return (
-        <Home
-          callback={this.onClick}
-          photos={this.state.photos}
-        />
-      );
+      return <Home callback={this.onClick} photos={this.state.photos} />;
     } else {
       return (
         <Photos
