@@ -80,7 +80,7 @@ class AllReviewsLightBox extends React.Component {
     return (
       <div className='transparentBackground' onClick={this.seeAllReviews} onScroll={this.scrollHandler}>
           <div id='allReviewsLightBox'>
-          <img src='../imgs/x.svg' className='allReviewsExitButton' onClick={this.seeAllReviews}></img>
+          <img src='../imgs/x.png' className='allReviewsExitButton' onClick={this.seeAllReviews}></img>
           <h1>{this.state.reviews.length} reviews</h1>
           <Search reviews={this.props.allReviews} filter={this.repopulateListForFilter} />
           {

@@ -1,18 +1,13 @@
 // // setup file ES6
-// import { configure } from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-// configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() });
 
 // setup file ES5
-var enzyme = require('enzyme');
-var Adapter = require('enzyme-adapter-react-16');
-const allTests = require('./allTests/functions.test');
+// var enzyme = require('enzyme');
+// var Adapter = require('enzyme-adapter-react-16');
 
-const allReviewsDaysAgo = allTests.contentTests.getDaysOld();
+// enzyme.configure({ adapter: new Adapter() });
 
-test('ensures all test are sorted by age', () => {
-  expect(allTests.contentTests.getDaysOld()).tobe(allReviewsDaysAgo);
-})
 
-enzyme.configure({ adapter: new Adapter() });

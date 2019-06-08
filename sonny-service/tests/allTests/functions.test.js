@@ -1,47 +1,24 @@
-const $ = require('jquery');
+import { React } from 'react';
 
-const contentTests = {
-  getReviews: (cb) => {
-    $.ajax({
-      url: '/reviews',
-      type: 'GET',
-      dataType: 'json',
-      success: (data) => {
-        cb(data)
-      },
-      error: (err) => {
-        throw new Error(err);
-      }
-    })
-  },
-  getDaysOld: (data) => {
-    this.getReviews( data => {
-      return data.map( item => {
-        return item.numDaysAgo;
-      })
-    })
-  }
-}
+import chai, { expect } from 'chai';
+import { shallow } from 'enzyme';
+import { Review } from './client/components';
 
-// const getReviews = (cb) => {
-//   $.ajax({
-//     url: '/reviews',
-//     type: 'GET',
-//     dataType: 'json',
-//     success: (data) => {
-//       cb(data)
-//     },
-//     error: (err) => {
-//       throw new Error(err);
-//     }
-//   })
-// }
 
-// const getDaysOld = getReviews( data => {
-//   return data.map( item => {
-//     return item.numDaysAgo;
-//   })
-// })
-
-console.log(contentTests.getDaysOld());
-module.exports = contentTests;
+describe('Review', () => {
+  it('has a child div with className header', () => {
+    const review = shallow(
+      <Review
+        key={1}
+        id={1}
+        name={'test'}
+        avatar={'img'}
+        reviewAge={100}
+        content={'this is a test'}
+        allReviews={[]}
+        seeAllReviewsMode={false}
+      />,
+    );
+     expect(review.find('.header').to.have.lengthOf(1))
+  });
+});
