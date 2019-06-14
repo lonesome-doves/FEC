@@ -1,6 +1,8 @@
 var path = require('path');
 var SRC_DIR = path.join(__dirname, '/client');
 var DIST_DIR = path.join(__dirname, '/public');
+
+// console.log(SRC_DIR);
 // DONT USE BABEL-LOADER 8, ONLY 7 || npm install -D babel-loader@7 babel-core babel-preset-env webpack
 
 module.exports = {
@@ -16,9 +18,12 @@ module.exports = {
         test: /\.jsx$/,
         include: SRC_DIR,
         exclude: [/(node_modules)/, /(routes)/, /(models)/, /(server)/],
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-object-rest-spread']
+          }
         }
       },
       {
@@ -39,5 +44,8 @@ module.exports = {
         ],
       }
     ]
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
   }
 }
