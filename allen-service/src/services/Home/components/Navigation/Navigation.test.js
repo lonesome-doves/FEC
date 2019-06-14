@@ -10,7 +10,7 @@ beforeEach(() => {
   wrapper = shallow(<Navigation />);
 });
 
-describe('Navigation', () => {
+describe('Navigation Component', () => {
   it('contains a search bar', () => {
     expect(wrapper.find(Search)).toBeTruthy();
   });
